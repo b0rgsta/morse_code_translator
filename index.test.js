@@ -1,4 +1,4 @@
-import {engToMorse} from "./index.js";
+import {engToMorse, flipObj, morseToEng} from "./index.js";
 
 describe('engToMorse', function () {
   it('should return an empty string when given an empty string', function () {
@@ -40,7 +40,6 @@ describe('engToMorse', function () {
 
   it('should handle commas', function () {
     expect(engToMorse(",")).toBe("--..--")
-
   });
 
   it('should handle a mix of letters and periods', function () {
@@ -53,7 +52,6 @@ describe('engToMorse', function () {
 
   it('should handle uppercase characters', function () {
     expect(engToMorse("YO")).toBe("-.-- ---")
-
   });
 
   it('should handle a mix of upper and lowercase characters', function () {
@@ -67,25 +65,75 @@ describe('engToMorse', function () {
 });
 
 describe('morseToEng', function () {
-  it('should only accept 4 characters . - | and spaces.', function () {
-
+  it('should only accept 4 characters , - | space', function () {
+    expect(() => morseToEng("hello")).toThrow("Invalid code entered.")
+    expect(() => morseToEng(123)).toThrow("Invalid code entered.")
+    expect(() => morseToEng("-..hello")).toThrow("Invalid code entered.")
+    expect(() => morseToEng(" -.hello")).toThrow("Invalid code entered.")
   });
+
   it('should return an empty string when given an empty string', function () {
-
+    expect(morseToEng("")).toBe("")
   });
+
   it('should handle spaces', function () {
-
+    expect(morseToEng("|")).toBe(" ")
   });
-  it('should handle multiple characters', function () {
 
+  it('should replace consecutive spaces with a single space', function () {
+    expect(morseToEng("||")).toBe(" ")
+    expect(morseToEng("|||")).toBe(" ")
   });
+
+  it('should ignore spaces at the beginning and the end of the code', function () {
+    expect(morseToEng("| .... .. |")).toBe("hi")
+  });
+
+  it('should handle multiple morse characters', function () {
+    expect(morseToEng("--- .-. .- -. --. .")).toBe("orange")
+  });
+
   it('should handle single characters', function () {
-
+    expect(morseToEng("-.-")).toBe("k")
+    expect(morseToEng("--")).toBe("m")
   });
-  it('should handle multiple sentences', function () {
 
-  });
   it('should not accept unknown alphabets', function () {
-
+    expect(morseToEng("------")).toThrow("Invalid code entered.")
+    expect(morseToEng("---.-.-")).toThrow("Invalid code entered.")
   });
+
+  it('should handle an empty string', function () {
+    expect(morseToEng("")).toBe("")
+  });
+
+  it('should handle strings containing only spaces', function () {
+    expect(morseToEng("  ")).toBe("")
+    expect(morseToEng(" ")).toBe("")
+    expect(morseToEng("     ")).toBe("")
+  });
+
 });
+
+describe('flipObj', function () {
+  it('should handle empty objects', function () {
+    expect(flipObj({})).toBe({})
+  });
+
+  it('should only accept objects', function () {
+    expect(flipObj([1,2,3])).toThrowError('not a valid input')
+  });
+
+  it('should switch the key and value around', function () {
+    expect(flipObj({name: 'Andrew'})).toBe({Andrew: 'name'})
+  });
+
+  it('should handle an object with multiple keys:values', function () {
+    expect(flipObj({name: 'Andrew', age: 35})).toBe({Andrew: 'name', 35: 'age'})
+  });
+
+  it('should handle a keys with non string values (null)', function () {
+    expect(flipObj({height: 161, age: null})).toBe({height: 161, null: 'age'})
+  });
+
+})
