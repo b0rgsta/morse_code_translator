@@ -5,19 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0">
     <title>Morse Code Translator</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <header>
-        <h2>Morse Code Translator</h2>
-    </header>
+<header>
+    <h2>Morse Code Translator</h2>
+</header>
 <main>
     <div class="instructions">
-        <p>Please enter your message in the text field below and don't forget to click search or hit enter to see your translation ;)</p>
+        <p>Please enter your message/code in the field below</p>
     </div>
     <div class="input-section">
-        <input type="text">
-        <button>Get Translation</button>
+        <textarea id="user-input" class="text-input" type="text"> </textarea>
+        <div class="button-div">
+            <button id="toMorseButton" class="btn">Get Morse Code</button>
+            <button id="toEnglishButton" class="btn">Get English Translation</button>
+        </div>
     </div>
 </main>
+<script type="module" src="js/index.js"></script>
 </body>
 </html>
