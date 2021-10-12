@@ -1,0 +1,43 @@
+body {
+  background-color: steelblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h2 {
+  font-size: 30px;
+  color: azure;
+}
+
+header, p {
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.text-input {
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  justify-content: center;
+  width: 60%;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.btn {
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.button-div {
+  width: 40%;
+  margin: 20px auto auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+/*# sourceMappingURL=main.css.map */
