@@ -4,6 +4,7 @@ import {engToMorse, morseToEng} from './translator.js';
 (() => {
   const userInputElement = document.getElementById('user-input');
 
+//when get morse button gets clicked
   document
     .getElementById('toMorseButton')
     .addEventListener('click', () => {
@@ -14,7 +15,7 @@ import {engToMorse, morseToEng} from './translator.js';
         alert(e.message)
       }
     });
-
+//when get eng button is clicked
   document
     .getElementById('toEnglishButton')
     .addEventListener('click', () => {

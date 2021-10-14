@@ -63,6 +63,8 @@ const morseTranslation = {
 //switching keys and values {eng: "morse"}
 const englishTranslation = flipObj(morseTranslation);
 
+
+
 /**
  * Given a string will convert characters into morse code.
  * @param {string | number} input
@@ -91,13 +93,15 @@ export const engToMorse = (input) => {
  */
 export const morseToEng = (morse) => {
 
+  if (morse === '') return ''
+
   //throws error to use if input is not a string (not required in UI but required to pass tests)
   if (typeof morse !== 'string') {
     throw new Error('Invalid input. Morse code must be a string.');
   }
 
   //throws error if every char in users code is NOT an accepted char.
-  if (morse.split('').every((character) => {
+  if (morse.split('').some((character) => {
     return !['.', '-', '|', ' '].includes(character);
   })) {
     throw new Error('Invalid input. Morse code must only contain \'. - | _\' characters.');
