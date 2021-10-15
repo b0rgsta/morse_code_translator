@@ -1,7 +1,12 @@
 import {flipObj} from './utils.js';
 
 //object containing english to morse conversion
-const morseTranslation = {
+export const morse = {
+  'end': '...-.-',
+  'error': '......',
+  'wait': '.-...',
+  'understood': '...-.',
+  '&': '.-...',
   '\n': '|',
   ' ': '|',
   '': '',
@@ -61,7 +66,7 @@ const morseTranslation = {
 };
 
 //switching keys and values {eng: "morse"}
-const englishTranslation = flipObj(morseTranslation);
+const englishTranslation = flipObj(morse);
 
 
 
@@ -76,11 +81,11 @@ export const engToMorse = (input) => {
     .split('')
     .map((character) => {
       //checks that all characters are translatable, else throws error.
-      if (!Object.keys(morseTranslation).includes(character)) {
+      if (!Object.keys(morse).includes(character)) {
         throw new Error('Invalid character entered.');
       }
       //returns morse code to new array being created.
-      return morseTranslation[character];
+      return morse[character];
     })
     //creates a string of code seperated by spaces.
     .join(' ');
