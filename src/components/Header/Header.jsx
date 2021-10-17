@@ -1,11 +1,11 @@
 import styles from "./Header.module.scss"
 
 const Header = () => {
-  return(
+  return (
     <div>
-      <h1>Morse Code Translator</h1>
+      <h1 className={styles.title}>Morse Code Translator</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

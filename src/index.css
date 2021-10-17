@@ -14,12 +14,3 @@ code {
     monospace;
 }
 
-@font-face {
-  font-family: 'morseCode';
-  src: local('morseCode'), url("./assets/fonts/morseCode.ttf") format('TrueType');
-}
-
-@font-face {
-  font-family: 'morseCode2';
-  src: local('morseCode2'), url("./assets/fonts/morseCode2.ttf") format('TrueType');
-}
